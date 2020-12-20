@@ -66,11 +66,12 @@ d3.json(url, function (data) {
             color = "red";
         }
 
+        //Add the circles to the map. Do not forget to addTo the map
         L.circle([eq_coordinates[1], eq_coordinates[0]], {
             fillOpacity: 0.75,
-            color: "black",
+            color: "white",
             fillColor: color,
-            radius: eq_magnitude * 7500
-        }).bindPopup("<h1>Place:" + eq_place + "</h1><hr><h3>Time:" + sites[i].properties.time + "</h3>")
+            radius: eq_magnitude * 25000
+        }).bindPopup("<h1>Place:" + eq_place + "</h1><hr><h3>Time:" + sites[i].properties.time + "</h3>").addTo(myMap)
     }
 })
