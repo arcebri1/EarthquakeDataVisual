@@ -17,32 +17,60 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     id: "mapbox/light-v10",
     accessToken: API_KEY
-  }).addTo(myMap);
+}).addTo(myMap);
 
 url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 
 //Read through the data
-d3.json(url, function(data) {
+d3.json(url, function (data) {
     console.log(data)
 
-//create a variable that calls up the array features witin the data in the geojson
+    //create a variable that calls up the array features witin the data in the geojson
     let sites = data.features
     console.log(sites)
-    
-//Loop through each object to call up the magnitude
-//and coordinates of each earthquake
-    for (let i=0; i < sites.length; i++) {
 
+    //Loop through each object to call up the magnitude
+    //and coordinates of each earthquake
+    for (let i = 0; i < sites.length; i++) {
+
+        //Create variables for each data point you want to retrieve
+        //console.log it to make sure you pull the correct data
         let eq_magnitude = sites[i].properties.mag
-        console.log(eq_magnitude)
+        // console.log(eq_magnitude)
 
-        let eq_
+        let eq_coordinates = sites[i].geometry.coordinates
+        // console.log(eq_coordinates[0])
+        // console.log([eq_coordinates[1], eq_coordinates[0]])
 
-        L.circle(sites[i].geometry.coordinates, {
-            fillOpacity: .75,
+        let eq_place = sites[i].properties.place
+        // console.log(eq_place)
+
+        //Create variable for loop for the colors
+        let color = "";
+        if (eq_magnitude >= 0) {
+            color = "lightgreen";
+        }
+        else if (eq_magnitude >= 1) {
+            color = "lightyellow";
+        }
+        else if (eq_magnitude >= 2) {
+            color = "lightorange";
+        }
+        else if (eq_magnitude >= 3) {
+            color = "orange";
+        }
+        else if (eq_magnitude >= 4) {
+            color = "lightred";
+        }
+        else {
+            color = "red";
+        }
+
+        L.circle([eq_coordinates[1], eq_coordinates[0]], {
+            fillOpacity: 0.75,
             color: "black",
-            fillColor: sites[i].properties.mag,
-            radius: sites[i].properties.mag
-        }).bindPopup("<h1>Place:" + sites[i].properties.place + "</h1><hr><h3>Time:" + sites[i].properties.time + "</h3>")
+            fillColor: color,
+            radius: eq_magnitude * 7500
+        }).bindPopup("<h1>Place:" + eq_place + "</h1><hr><h3>Time:" + sites[i].properties.time + "</h3>")
     }
 })
