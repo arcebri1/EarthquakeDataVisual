@@ -33,5 +33,16 @@ d3.json(url, function(data) {
 //and coordinates of each earthquake
     for (let i=0; i < sites.length; i++) {
 
+        let eq_magnitude = sites[i].properties.mag
+        console.log(eq_magnitude)
+
+        let eq_
+
+        L.circle(sites[i].geometry.coordinates, {
+            fillOpacity: .75,
+            color: "black",
+            fillColor: sites[i].properties.mag,
+            radius: sites[i].properties.mag
+        }).bindPopup("<h1>Place:" + sites[i].properties.place + "</h1><hr><h3>Time:" + sites[i].properties.time + "</h3>")
     }
 })
