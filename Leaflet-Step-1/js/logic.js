@@ -23,11 +23,11 @@ url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
 
 //Read through the data
 d3.json(url, function (data) {
-    console.log(data)
+    // console.log(data)
 
     //create a variable that calls up the array features witin the data in the geojson
     let sites = data.features
-    console.log(sites)
+    // console.log(sites)
 
     //Create for loop to define colors for the size of the
     //earthquake magnitude
