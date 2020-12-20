@@ -80,12 +80,13 @@ d3.json(url, function (data) {
         }).bindPopup("<h2>Earthquake Magnitude:" + eq_magnitude + "</h2><hr><h3>Place:" + eq_place + "</h3><hr><h3>Time:" + new Date(sites[i].properties.time) + "</h3>").addTo(myMap)
     }
 
-    // <!------------------------------->
     // Set up the legend
     let legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function () {
 
+        //create the variable for the div to use later in the foor loop
+        //make sure to include labels even if it is an empty array
         let div = L.DomUtil.create('div', 'info legend'),
             grades = [0, 1, 2, 3, 4, 5],
             labels = [];
@@ -93,10 +94,9 @@ d3.json(url, function (data) {
         // loop through our density intervals and generate a label with a colored square for each interval
         for (let i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + circleColor(grades[i] + 1) + '"></i> ' +
+                '<i style="background:' + circleColor(grades[i]) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
-
         return div;
     };
     // Adding legend to the map
