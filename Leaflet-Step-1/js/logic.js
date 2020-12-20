@@ -29,6 +29,28 @@ d3.json(url, function (data) {
     let sites = data.features
     console.log(sites)
 
+    function circleColor(magnitude) {
+
+        if (magnitude < 1) {
+            return "#b8ff4d"
+        }
+        else if (magnitude < 2) {
+            return "yellow"
+        }
+        else if (magnitude < 3) {
+            return "#ffdb4d"
+        }
+        else if (magnitude < 4) {
+            return "#ffb84d"
+        }
+        else if (magnitude < 5) {
+            return "#ff944d"
+        }
+        else {
+            return "#ff4d4d"
+        }
+    }
+
     //Loop through each object to call up the magnitude
     //and coordinates of each earthquake
     for (let i = 0; i < sites.length; i++) {
@@ -46,26 +68,27 @@ d3.json(url, function (data) {
         // console.log(eq_place)
 
         //Create variable for loop for the colors
-        let color = "";
+        // function color(magnitude) {
 
-        if (eq_magnitude >= 1) {
-            color = "#b8ff4d";
-        }
-        else if (eq_magnitude >= 2) {
-            color = "l#ffff66";
-        }
-        else if (eq_magnitude >= 3) {
-            color = "#ffdb4d";
-        }
-        else if (eq_magnitude >= 4) {
-            color = "#ffb84d";
-        }
-        else if (eq_magnitude >= 5) {
-            color = "#ff944d";
-        }
-        else {
-            color = "#ff4d4d";
-        }
+        //     if (magnitude > 1) {
+        //         return "#b8ff4d"
+        //     }
+        //     else if (magnitude > 2) {
+        //         return "l#ffff66"
+        //     }
+        //     else if (magnitude > 3) {
+        //         return "#ffdb4d"
+        //     }
+        //     else if (magnitude > 4) {
+        //         return "#ffb84d"
+        //     }
+        //     else if (magnitude > 5) {
+        //         return "#ff944d"
+        //     }
+        //     else {
+        //         return "#ff4d4d"
+        //     }
+        // }
 
 
         //Add the circles to the map. Do not forget to addTo the map
@@ -73,8 +96,8 @@ d3.json(url, function (data) {
             fillOpacity: 0.75,
             color: "white",
             weight: 1,
-            fillColor: color,
+            fillColor: circleColor(eq_magnitude),
             radius: eq_magnitude * 25000
-        }).bindPopup("<h1>Earthquake Magnitude:" + eq_magnitude + "</h1><hr><h3>Place:" + eq_place + "</h3><hr><h3>Time:" + new Date(sites[i].properties.time) + "</h3>").addTo(myMap)
+        }).bindPopup("<h2>Earthquake Magnitude:" + eq_magnitude + "</h2><hr><h3>Place:" + eq_place + "</h3><hr><h3>Time:" + new Date(sites[i].properties.time) + "</h3>").addTo(myMap)
     }
 })
