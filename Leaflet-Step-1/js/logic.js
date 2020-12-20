@@ -47,31 +47,34 @@ d3.json(url, function (data) {
 
         //Create variable for loop for the colors
         let color = "";
-        if (eq_magnitude >= 0) {
-            color = "lightgreen";
-        }
-        else if (eq_magnitude >= 1) {
-            color = "lightyellow";
+
+        if (eq_magnitude >= 1) {
+            color = "#b8ff4d";
         }
         else if (eq_magnitude >= 2) {
-            color = "lightorange";
+            color = "l#ffff66";
         }
         else if (eq_magnitude >= 3) {
-            color = "orange";
+            color = "#ffdb4d";
         }
         else if (eq_magnitude >= 4) {
-            color = "lightred";
+            color = "#ffb84d";
+        }
+        else if (eq_magnitude >= 5) {
+            color = "#ff944d";
         }
         else {
-            color = "red";
+            color = "#ff4d4d";
         }
+
 
         //Add the circles to the map. Do not forget to addTo the map
         L.circle([eq_coordinates[1], eq_coordinates[0]], {
             fillOpacity: 0.75,
             color: "white",
+            weight: 1,
             fillColor: color,
             radius: eq_magnitude * 25000
-        }).bindPopup("<h1>Place:" + eq_place + "</h1><hr><h3>Time:" + sites[i].properties.time + "</h3>").addTo(myMap)
+        }).bindPopup("<h1>Earthquake Magnitude:" + eq_magnitude + "</h1><hr><h3>Place:" + eq_place + "</h3><hr><h3>Time:" + new Date(sites[i].properties.time) + "</h3>").addTo(myMap)
     }
 })
