@@ -57,7 +57,7 @@ let layers = {
   };
 
 // Create the map with our layers
-let map = L.map("map", {
+let myMap = L.map("map", {
     center: [39.50, -98.35],
     zoom: 4,
     layers: [ 
@@ -67,17 +67,17 @@ let map = L.map("map", {
   });
 
 // Add our 'light' tile layer to the map
-light.addTo(map);
+light.addTo(myMap);
 
 // Create an overlays object to add to the layer control
-let overlays = {
+let overlayMaps = {
     "Earthquakes": layers.EARTHQUAKES,
     "Plates": layers.PLATES
   };
 
 // Pass our map layers into our layer control
 // Add the layer control to the map
-// L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
 url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 
