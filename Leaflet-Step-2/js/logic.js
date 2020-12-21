@@ -7,14 +7,13 @@ d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/
     console.log(data)
 })
 
-// plates_url = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_plates.json"
 
 //Create a map object, I chose the middle of US as the center
-let myMap = L.map("map", {
-    center: [39.50, -98.35],
-    zoom: 4,
-    layers: [satellite, cityLayer]
-})
+// let myMap = L.map("map", {
+//     center: [39.50, -98.35],
+//     zoom: 4,
+//     layers: [satellite, cityLayer]
+// })
 
 // Define variables for our base map tile layers
 let light = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -51,15 +50,34 @@ let baseMaps = {
     Outdoors: outdoors
   };
 
-// Overlays that may be toggled on or off
-// let overlayMaps = {
-//     "Fault lines": ,
-//     "Earthquakes": 
-//   };
+// Initialize all of the LayerGroups we'll be using
+let layers = {
+    EARTHQUAKES: new L.LayerGroup(),
+    PLATES: new L.LayerGroup()
+  };
+
+// Create the map with our layers
+let map = L.map("map", {
+    center: [39.50, -98.35],
+    zoom: 4,
+    layers: [ 
+      layers.EARTHQUAKES,
+      layers.PLATES
+    ]
+  });
+
+// Add our 'light' tile layer to the map
+light.addTo(map);
+
+// Create an overlays object to add to the layer control
+let overlays = {
+    "Earthquakes": layers.EARTHQUAKES,
+    "Plates": layers.PLATES
+  };
 
 // Pass our map layers into our layer control
 // Add the layer control to the map
-L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+// L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
 url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 
