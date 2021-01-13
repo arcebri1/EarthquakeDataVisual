@@ -11,7 +11,7 @@ I created an interactive map using leaflet to visualize the United States Geolog
 The earthquake data was obtained from [USGS](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php). The data set picked was, [All Earthquakes from the Past Day](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
 
 
-### Leaflet-Step-1
+## Leaflet-Step-1
 
 ![2-BasicMap](Images/2-BasicMap.png)
 
@@ -24,9 +24,7 @@ The earthquake data was obtained from [USGS](http://earthquake.usgs.gov/earthqua
 
    * Created a legend that will provide context on the magnitude of the marker regarding its color.
 
-### Leaflet-Step-2 (Work in Progress)
-
-![5-Advanced](Images/5-Advanced.png)
+## Leaflet-Step-2 (Work in Progress)
 
 I will be plotting a second data set on the map to illustrate the relationship between tectonic plates and seismic activity. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
 
@@ -37,6 +35,9 @@ What I will be doing..
 * Add a number of base maps to choose from as well as separate out the two different data sets into overlays that can be turned on and off independently.
 
 * Add layer controls to the map.
+
+* Map will look like this:
+![5-Advanced](Images/5-Advanced.png)
 
 - - -
 
