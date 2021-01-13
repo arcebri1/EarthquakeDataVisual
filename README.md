@@ -16,7 +16,7 @@ The earthquake data was obtained from [USGS](http://earthquake.usgs.gov/earthqua
 ![2-BasicMap](Images/2-BasicMap.png)
 
 
-   *Created a map using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude.
+   * Created a map using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude.
 
    * Data markers reflect the magnitude of the earthquake in their size and color. Earthquakes with higher magnitudes appear larger and darker in color.
 
