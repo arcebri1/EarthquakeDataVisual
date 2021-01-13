@@ -2,7 +2,7 @@
 
 - - -
 
-I created an interactive map using leaflet to visualize the United States Geological Survey (USGS) earthquake data, along with tectonic data.
+I created an interactive map using leaflet to visualize the United States Geological Survey (USGS) earthquake data. Working on adding tectonic data to the map.
 
 - - -
 
