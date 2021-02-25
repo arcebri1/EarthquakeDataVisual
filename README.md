@@ -13,7 +13,7 @@ The earthquake data was obtained from [USGS](http://earthquake.usgs.gov/earthqua
 
 ## Leaflet-Step-1
 
-![2-BasicMap](Images/2-BasicMap.png)
+![](Images/map.gif)
 
 
    * Created a map using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude.
@@ -37,7 +37,7 @@ What I will be doing..
 * Add layer controls to the map.
 
 * Map will look like this:
-![5-Advanced](Images/5-Advanced.png)
+![](Images/5-Advanced.png)
 
 - - -
 
